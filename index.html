@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christian Santos | Desenvolvedor Back-end e Mobile</title>
+<meta name="description" content="Portfólio de Christian Santos, estudante de ADS na FIAP. APIs em Java e Spring Boot, apps Android em Kotlin e Jetpack Compose, bancos Oracle. Buscando estágio em desenvolvimento.">
+<meta property="og:title" content="Christian Santos | Desenvolvedor Back-end e Mobile">
+<meta property="og:description" content="APIs em Java e Spring Boot, apps Android em Kotlin. Projetos com código aberto no GitHub.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://christiangit2025-sys.github.io/">
+<meta property="og:image" content="https://christiangit2025-sys.github.io/assets/og.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F5F8;
+    --ink:#14213D;
+    --muted:#55607A;
+    --rule:#D5DBE5;
+    --white:#FFFFFF;
+    /* cores das linhas: uma por projeto */
+    --verde:#007E5E;
+    --azul:#0455A1;
+    --lilas:#9B3894;
+    --amarela:#F2B705;
+    --vermelha:#D93A30;
+    --wide:"wdth" 125;
+    --narrow:"wdth" 80;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:4px}
+  img{max-width:100%;height:auto;display:block}
+  .wrap{width:min(1120px,100% - 48px);margin-inline:auto}
+
+  /* topo */
+  .top{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+  .top .mono{font-weight:800;font-variation-settings:var(--wide);letter-spacing:-.02em;text-decoration:none;font-size:18px}
+  .top nav{display:flex;gap:22px;font-size:15px}
+  .top nav a{text-decoration:none;color:var(--muted)}
+  .top nav a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+  /* hero */
+  .hero{padding:56px 0 24px}
+  .hero h1{margin:0;font-size:clamp(48px,9.5vw,128px);line-height:.92;font-weight:850;font-variation-settings:var(--wide);letter-spacing:-.035em}
+  .hero .role{margin:28px 0 0;max-width:30ch;font-size:clamp(22px,2.6vw,30px);line-height:1.3;font-weight:500}
+  .hero .lead{margin:18px 0 0;max-width:62ch;color:var(--muted)}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;font-weight:650;font-size:16px;text-decoration:none;border:2px solid var(--ink)}
+  .btn.solid{background:var(--ink);color:var(--white)}
+  .btn.solid:hover{background:#22325A}
+  .btn.ghost:hover{background:var(--white)}
+  .btn svg{width:18px;height:18px}
+
+  /* hero em duas colunas: texto e mapa das linhas */
+  .hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:56px;align-items:end}
+  .map{position:relative;padding:8px 0 8px 0}
+  .map .track{position:absolute;left:15px;top:62px;bottom:26px;width:8px;border-radius:8px;background:linear-gradient(180deg,var(--verde) 0 20%,var(--azul) 20% 40%,var(--lilas) 40% 60%,var(--amarela) 60% 80%,var(--vermelha) 80% 100%);transform-origin:top;animation:draw 1.1s cubic-bezier(.6,.05,.2,1) .2s both}
+  @keyframes draw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  .map p{margin:0 0 18px 54px;font-weight:700;font-size:15px;color:var(--muted)}
+  .map ol{list-style:none;margin:0;padding:0;display:grid;gap:22px;position:relative}
+  .map li a{display:grid;grid-template-columns:38px 1fr;column-gap:16px;align-items:center;text-decoration:none}
+  .map .dot{grid-row:span 2;width:38px;height:38px;border-radius:50%;background:var(--white);border:8px solid var(--c);transition:background .15s}
+  .map li a:hover .dot,.map li a:focus-visible .dot{background:var(--c)}
+  .map strong{font-size:19px;line-height:1.2;font-weight:760}
+  .map small{color:var(--muted);font-size:14px;line-height:1.35}
+
+  /* seções */
+  section{padding:88px 0 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:8px}
+  .sec-head h2{margin:0;font-size:clamp(30px,4vw,44px);font-weight:820;font-variation-settings:var(--wide);letter-spacing:-.025em;line-height:1}
+  .sec-head p{margin:0;color:var(--muted);font-size:15px;max-width:44ch;text-align:right}
+
+  /* projetos */
+  .proj{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;padding:48px 0 52px;border-bottom:1px solid var(--rule);scroll-margin-top:24px}
+  .proj .info{border-left:10px solid var(--c);padding-left:26px}
+  .proj .line-name{display:inline-block;background:var(--c);color:var(--on,#fff);font-weight:700;font-size:14px;padding:3px 12px;border-radius:999px;font-variation-settings:var(--narrow)}
+  .proj h3{margin:14px 0 6px;font-size:clamp(26px,3vw,36px);line-height:1.1;font-weight:800;font-variation-settings:"wdth" 110;letter-spacing:-.02em}
+  .proj .what{margin:0 0 16px;font-size:19px;line-height:1.45;font-weight:500;max-width:46ch}
+  .proj ul.points{margin:0 0 20px;padding-left:20px;color:#2A3655;max-width:60ch}
+  .proj ul.points li{margin:6px 0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+  .chips li{font-size:14px;font-weight:600;padding:4px 11px;border:1.5px solid var(--rule);border-radius:6px;background:var(--white)}
+  .links{display:flex;flex-wrap:wrap;gap:18px;font-weight:650}
+  .links a{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-color:var(--c)}
+  .links a:hover{text-decoration-thickness:4px}
+
+  .visual{align-self:center}
+  .phones{display:flex;gap:14px;align-items:flex-end}
+  .phones img{width:calc((100% - 28px)/3)}
+  .phones.framed img{border-radius:18px;border:5px solid var(--ink);background:var(--ink)}
+  .phones img:nth-child(2){transform:translateY(-22px)}
+  pre.code{margin:0;background:var(--ink);color:#E6ECF7;border-radius:14px;padding:22px 24px;font:14px/1.6 ui-monospace,"Cascadia Code","Consolas",monospace;overflow-x:auto;border-top:8px solid var(--c)}
+  pre.code .k{color:#8FB8FF} pre.code .s{color:#9BE3C3} pre.code .c{color:#8A97B5} pre.code .n{color:#FFD27A}
+  .flow{list-style:none;margin:0;padding:0;counter-reset:f;background:var(--white);border-radius:14px;padding:22px 24px;border:1.5px solid var(--rule)}
+  .flow li{position:relative;padding:10px 0 10px 46px;counter-increment:f;font-weight:600}
+  .flow li::before{content:counter(f);position:absolute;left:0;top:7px;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-size:14px}
+  .flow li:not(:last-child)::after{content:"";position:absolute;left:14px;top:37px;bottom:-7px;width:3px;background:var(--c);opacity:.35}
+  .flow li span{display:block;font-weight:400;color:var(--muted);font-size:15px}
+
+  /* competências */
+  .stack{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:8px}
+  .stack div{padding:28px 24px 28px 0;border-right:1px solid var(--rule)}
+  .stack div+div{padding-left:24px}
+  .stack div:last-child{border-right:0}
+  .stack h3{margin:0 0 12px;font-size:20px;font-weight:780;font-variation-settings:"wdth" 110}
+  .stack p{margin:0;color:#2A3655;line-height:1.75}
+
+  /* trajetória */
+  .route{position:relative;margin-top:36px;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;list-style:none;padding:0}
+  .route::before{content:"";position:absolute;top:13px;left:0;right:0;height:6px;background:var(--ink);border-radius:6px}
+  .route li{position:relative;padding-top:44px}
+  .route li::before{content:"";position:absolute;top:0;left:0;width:32px;height:32px;border-radius:50%;background:var(--paper);border:6px solid var(--ink)}
+  .route li.next::before{background:var(--amarela);border-color:var(--ink)}
+  .route time{display:block;font-weight:800;font-size:15px;color:var(--muted)}
+  .route strong{display:block;font-size:18px;line-height:1.25;margin:4px 0 6px;font-variation-settings:"wdth" 105}
+  .route p{margin:0;font-size:15px;color:#2A3655;line-height:1.5}
+  .route .big{font-size:26px;font-weight:850;color:var(--ink);font-variation-settings:var(--wide);display:block;line-height:1.1;margin-top:6px}
+  .parallel{margin-top:30px;padding:18px 22px;border-left:10px solid var(--azul);background:var(--white);border-radius:0 12px 12px 0;max-width:720px}
+  .parallel strong{font-variation-settings:"wdth" 105}
+
+  /* contato */
+  .contact{padding:96px 0 40px}
+  .contact h2{margin:0;font-size:clamp(40px,7vw,88px);line-height:.95;font-weight:850;font-variation-settings:var(--wide);letter-spacing:-.035em;max-width:14ch}
+  .contact p{max-width:56ch;color:var(--muted);margin:22px 0 0}
+  footer{padding:40px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--rule);margin-top:72px}
+
+  @media (max-width:900px){
+    .proj{grid-template-columns:minmax(0,1fr);gap:32px}
+    .proj .info{padding-left:18px;border-left-width:8px}
+    .stack{grid-template-columns:1fr 1fr}
+    .stack div{border-right:0;padding:20px 0!important;border-bottom:1px solid var(--rule)}
+    .route{grid-template-columns:1fr;gap:26px}
+    .route::before{top:0;bottom:0;left:13px;right:auto;width:6px;height:auto}
+    .route li{padding:0 0 0 52px}
+    .hero{grid-template-columns:minmax(0,1fr);gap:44px}
+    .sec-head{flex-direction:column;align-items:flex-start}
+    .sec-head p{text-align:left}
+  }
+  @media (max-width:560px){
+    .top nav{display:none}
+    .stack{grid-template-columns:1fr}
+    .phones img:nth-child(2){transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mono" href="#">Christian Santos</a>
+    <nav aria-label="Seções">
+      <a href="#projetos">Projetos</a>
+      <a href="#competencias">Competências</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="intro">
+      <h1>Christian<br>Santos</h1>
+      <p class="role">Desenvolvedor back-end e mobile em formação, buscando estágio.</p>
+      <p class="lead">Estudo Análise e Desenvolvimento de Sistemas na FIAP e construo APIs em Java com Spring Boot, apps Android em Kotlin e bancos de dados Oracle. Antes do código, gerenciei uma loja de varejo e aprendi a decidir com base em indicadores — é assim que penso software: começando pelo problema de quem vai usar.</p>
+      <div class="actions">
+        <a class="btn solid" href="#projetos">Ver projetos</a>
+        <a class="btn ghost" href="https://github.com/christiangit2025-sys" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+          GitHub
+        </a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/christian-santos-6530bb247/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      </div>
+
+      <nav class="map" aria-label="Projetos em destaque">
+        <div class="track" aria-hidden="true"></div>
+        <p>Projetos em destaque</p>
+        <ol>
+          <li><a href="#esg-api" style="--c:var(--verde)"><span class="dot"></span><strong>ESG API</strong><small>Java e Spring Boot</small></a></li>
+          <li><a href="#signflow" style="--c:var(--azul)"><span class="dot"></span><strong>SignFlow</strong><small>Android e Kotlin</small></a></li>
+          <li><a href="#educafin" style="--c:var(--lilas)"><span class="dot"></span><strong>EducaFin Social</strong><small>Android e Retrofit</small></a></li>
+          <li><a href="#alertaperto" style="--c:var(--amarela)"><span class="dot"></span><strong>AlertaPerto</strong><small>Produto e protótipo</small></a></li>
+          <li><a href="#plsql" style="--c:var(--vermelha)"><span class="dot"></span><strong>Automação ESG</strong><small>Oracle e PL/SQL</small></a></li>
+        </ol>
+      </nav>
+    </div>
+
+    <section id="projetos" aria-labelledby="t-projetos">
+      <div class="sec-head">
+        <h2 id="t-projetos">Projetos</h2>
+        <p>Todos com código ou material aberto no GitHub. Cada um tem uma cor, como as linhas do metrô de São Paulo.</p>
+      </div>
+
+      <article class="proj" id="esg-api" style="--c:var(--verde)">
+        <div class="info">
+          <span class="line-name">Linha verde, back-end</span>
+          <h3>ESG API</h3>
+          <p class="what">API REST para empresas registrarem emissões de CO₂, lançarem compensações e acompanharem indicadores de sustentabilidade.</p>
+          <ul class="points">
+            <li>Autenticação JWT com Spring Security e perfis de acesso: USER consulta, ADMIN altera.</li>
+            <li>Esquema Oracle versionado com migrations Flyway e regra de negócio que impede compensar mais CO₂ do que foi emitido.</li>
+            <li>Erros padronizados (400 a 422), Swagger, collection Postman e testes unitários com JUnit.</li>
+            <li>Sobe API e banco com um único <code>docker compose up</code>.</li>
+          </ul>
+          <ul class="chips" aria-label="Tecnologias">
+            <li>Java 17</li><li>Spring Boot 3</li><li>Spring Security</li><li>Spring Data JPA</li><li>Oracle</li><li>Flyway</li><li>Docker</li><li>Swagger</li><li>JUnit</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/christiangit2025-sys/esg-api-emissoes-carbono" target="_blank" rel="noopener">Ver código no GitHub</a>
+            <a href="https://github.com/christiangit2025-sys/esg-api-emissoes-carbono/blob/main/docs/relatorio-tecnico.pdf" target="_blank" rel="noopener">Relatório técnico</a>
+          </div>
+        </div>
+        <div class="visual">
+<pre class="code" aria-label="Exemplo de requisição da API"><span class="c">// POST /api/emissoes-carbono  (perfil ADMIN)</span>
+{
+  <span class="k">"empresaId"</span>: <span class="n">1</span>,
+  <span class="k">"quantidadeCo2"</span>: <span class="n">145.50</span>,
+  <span class="k">"setor"</span>: <span class="s">"Transportes e Frotas"</span>,
+  <span class="k">"dataReferencia"</span>: <span class="s">"2026-10-26"</span>
+}
+
+<span class="c">// GET /api/indicadores-sustentabilidade</span>
+{
+  <span class="k">"totalEmitidoCo2"</span>: <span class="n">...</span>,
+  <span class="k">"totalCompensadoCo2"</span>: <span class="n">...</span>,
+  <span class="k">"percentualCompensado"</span>: <span class="n">...</span>,
+  <span class="k">"emissoesPorSetor"</span>: [ <span class="n">...</span> ]
+}</pre>
+        </div>
+      </article>
+
+      <article class="proj" id="signflow" style="--c:var(--azul)">
+        <div class="info">
+          <span class="line-name">Linha azul, mobile</span>
+          <h3>SignFlow</h3>
+          <p class="what">App Android para preparar, enviar e assinar documentos PDF pelo celular. Feito individualmente para o Challenge FIAP com a LetsSign.</p>
+          <ul class="points">
+            <li>Arquitetura MVVM com repositórios por interface, pronta para trocar o banco local por uma API na próxima sprint.</li>
+            <li>Editor de campos de assinatura sobre o PDF: arrastar, redimensionar e salvar a posição relativa à página.</li>
+            <li>PDF final carimbado com PDFBox, hash SHA-256 do original e trilha de eventos.</li>
+            <li>Senhas com PBKDF2 e reenvio sem duplicar solicitações.</li>
+          </ul>
+          <ul class="chips" aria-label="Tecnologias">
+            <li>Kotlin</li><li>Jetpack Compose</li><li>Room</li><li>Coroutines e Flow</li><li>PDFBox</li><li>MVVM</li><li>JUnit</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/christiangit2025-sys/signflow-android" target="_blank" rel="noopener">Ver código no GitHub</a>
+          </div>
+        </div>
+        <div class="visual">
+          <ol class="flow" aria-label="Fluxo de um documento no SignFlow">
+            <li>Upload do PDF<span>Arquivos inválidos, corrompidos ou com senha são recusados</span></li>
+            <li>Signatários<span>Contratante, contratado ou testemunha</span></li>
+            <li>Campos de assinatura<span>Vários por pessoa, em qualquer página</span></li>
+            <li>Revisão e envio<span>Protocolo único evita duplicidade</span></li>
+            <li>Assinatura e conclusão<span>Status calculado e PDF carimbado</span></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="proj" id="educafin" style="--c:var(--lilas)">
+        <div class="info">
+          <span class="line-name">Linha lilás, mobile</span>
+          <h3>EducaFin Social</h3>
+          <p class="what">App de educação financeira para quem tem pouco acesso a serviços bancários: registra receitas e despesas e mostra as cotações do dia.</p>
+          <ul class="points">
+            <li>Cinco telas em Jetpack Compose com Navigation Compose e estado centralizado em ViewModel.</li>
+            <li>Cotações do dólar e do euro em tempo real via Retrofit e coroutines, com tratamento de carregamento e erro.</li>
+            <li>Do conceito ao app funcional e relatório técnico no mesmo dia.</li>
+          </ul>
+          <ul class="chips" aria-label="Tecnologias">
+            <li>Kotlin</li><li>Jetpack Compose</li><li>Retrofit</li><li>Coroutines</li><li>REST</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/christiangit2025-sys/educafin-social-android" target="_blank" rel="noopener">Ver código no GitHub</a>
+          </div>
+        </div>
+        <div class="visual phones">
+          <img src="assets/educafin-2.jpg" alt="Painel com saldo atual e atalhos" loading="lazy" width="360" height="760">
+          <img src="assets/educafin-4.jpg" alt="Tela de educação financeira com cotações do dólar e do euro" loading="lazy" width="360" height="760">
+          <img src="assets/educafin-3.jpg" alt="Formulário de nova transação" loading="lazy" width="360" height="760">
+        </div>
+      </article>
+
+      <article class="proj" id="alertaperto" style="--c:var(--amarela);--on:#14213D">
+        <div class="info">
+          <span class="line-name">Linha amarela, produto</span>
+          <h3>AlertaPerto</h3>
+          <p class="what">Alertas de alagamento e calor extremo para a rua de cada pessoa, com o que fazer e para onde ir. Global Solution FIAP, desafio CitizenTech.</p>
+          <ul class="points">
+            <li>Pesquisa do problema com dados públicos de São Paulo e persona baseada em quem mais sofre com as chuvas.</li>
+            <li>Protótipo navegável de 13 telas no Figma: alerta por rua, instruções em passos, rota segura e check-in que avisa a família.</li>
+            <li>Arquitetura proposta com coleta a cada 5 minutos, motor de risco por rua e envio por push, SMS e WhatsApp.</li>
+          </ul>
+          <ul class="chips" aria-label="Tecnologias e práticas">
+            <li>Figma</li><li>UX</li><li>Product discovery</li><li>Pitch</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/christiangit2025-sys/alertaperto" target="_blank" rel="noopener">Ver estudo de caso</a>
+            <a href="https://www.figma.com/proto/t40gDyUWm5b20plWRF7EuE/Global-Solution-AlertaPerto" target="_blank" rel="noopener">Abrir protótipo</a>
+          </div>
+        </div>
+        <div class="visual phones framed">
+          <img src="assets/alertaperto-03-painel.jpg" alt="Início com risco de alagamento na rua da usuária" loading="lazy" width="360" height="779">
+          <img src="assets/alertaperto-04-alerta.jpg" alt="Alerta: risco alto de alagamento em 40 minutos" loading="lazy" width="360" height="779">
+          <img src="assets/alertaperto-05-agir.jpg" alt="Lista do que fazer agora, em quatro passos" loading="lazy" width="360" height="779">
+        </div>
+      </article>
+
+      <article class="proj" id="plsql" style="--c:var(--vermelha)">
+        <div class="info">
+          <span class="line-name">Linha vermelha, dados</span>
+          <h3>Automação ESG em PL/SQL</h3>
+          <p class="what">Banco Oracle que monitora o consumo de energia de equipamentos IoT e gera alertas de desperdício sozinho.</p>
+          <ul class="points">
+            <li>Modelagem de setores, equipamentos, leituras e alertas com chaves estrangeiras e sequence.</li>
+            <li>Quatro triggers: pico de consumo, risco à meta mensal do setor, falha de equipamento e auditoria de mudanças nas metas.</li>
+          </ul>
+          <ul class="chips" aria-label="Tecnologias">
+            <li>Oracle</li><li>PL/SQL</li><li>SQL</li><li>Modelagem de dados</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/christiangit2025-sys/automacao-esg-plsql" target="_blank" rel="noopener">Ver código no GitHub</a>
+          </div>
+        </div>
+        <div class="visual">
+<pre class="code" aria-label="Trecho de trigger PL/SQL"><span class="k">CREATE OR REPLACE TRIGGER</span> TRG_ALERTA_PICO_CONSUMO
+<span class="k">AFTER INSERT ON</span> LEITURA_CONSUMO
+<span class="k">FOR EACH ROW</span>
+<span class="k">BEGIN</span>
+  <span class="c">-- mais de 50 kWh numa leitura: alerta crítico</span>
+  <span class="k">IF</span> :NEW.KWH_REGISTRADO > <span class="n">50</span> <span class="k">THEN</span>
+    <span class="k">INSERT INTO</span> ALERTA_DESPERDICIO (...)
+    <span class="k">VALUES</span> (SEQ_ALERTA.NEXTVAL, :NEW.ID_EQUIPAMENTO,
+            SYSDATE, <span class="s">'Pico de consumo detectado'</span>,
+            <span class="s">'CRITICO'</span>);
+  <span class="k">END IF</span>;
+<span class="k">END</span>;</pre>
+        </div>
+      </article>
+    </section>
+
+    <section id="competencias" aria-labelledby="t-comp">
+      <div class="sec-head">
+        <h2 id="t-comp">Competências</h2>
+        <p>O que usei nos projetos acima e nas disciplinas da FIAP.</p>
+      </div>
+      <div class="stack">
+        <div><h3>Back-end</h3><p>Java 17<br>Spring Boot<br>Spring Security e JWT<br>Spring Data JPA<br>APIs REST<br>Node.js</p></div>
+        <div><h3>Mobile</h3><p>Kotlin<br>Android<br>Jetpack Compose<br>Room<br>Retrofit<br>Coroutines</p></div>
+        <div><h3>Dados e front-end</h3><p>Oracle e PL/SQL<br>SQL<br>Flyway<br>React e TypeScript<br>Next.js<br>HTML e CSS</p></div>
+        <div><h3>Ferramentas</h3><p>Git e GitHub<br>Docker<br>Postman e Swagger<br>JUnit<br>Figma</p></div>
+      </div>
+    </section>
+
+    <section id="trajetoria" aria-labelledby="t-traj">
+      <div class="sec-head">
+        <h2 id="t-traj">Trajetória</h2>
+        <p>Do balcão ao código: anos atendendo clientes e liderando equipe antes de migrar para tecnologia.</p>
+      </div>
+      <ol class="route">
+        <li><time>2022–2023</time><strong>Vendedor de varejo</strong><p>Cellairis Brasil. Atendimento e operação de vendas.</p></li>
+        <li><time>2024</time><strong>Vendedor B2B</strong><p>Hrebos. Vendas para empresas e controle de estoque.</p></li>
+        <li><time>2024–2025</time><strong>Consultor de vendas</strong><p>DECO. Venda consultiva e relacionamento de longo prazo.</p></li>
+        <li><time>2025–hoje</time><strong>Gerente de loja</strong><p>MyPhone Celulares. Faturamento de no máximo R$ 92 mil levado a</p><span class="big">R$ 140 mil</span><p>no segundo mês, gerindo por indicadores.</p></li>
+        <li class="next"><time>Próxima estação</time><strong>Estágio em desenvolvimento</strong><p>Back-end, mobile ou full stack. Presencial, híbrido ou remoto em São Paulo.</p></li>
+      </ol>
+      <div class="parallel"><strong>Em paralelo:</strong> Análise e Desenvolvimento de Sistemas na FIAP, com conclusão prevista para 2027.</div>
+    </section>
+
+    <section class="contact" id="contato" aria-labelledby="t-contato">
+      <h2 id="t-contato">Vamos conversar sobre um estágio?</h2>
+      <p>Estou disponível para vagas de estágio em desenvolvimento back-end, mobile ou full stack. O jeito mais rápido de falar comigo é pelo LinkedIn.</p>
+      <div class="actions">
+        <a class="btn solid" href="https://www.linkedin.com/in/christian-santos-6530bb247/" target="_blank" rel="noopener">Enviar mensagem no LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/christiangit2025-sys" target="_blank" rel="noopener">Ver perfil no GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>Christian Santos, Taboão da Serra (SP). Site estático publicado com GitHub Pages.</footer>
+</div>
+</body>
+</html>
